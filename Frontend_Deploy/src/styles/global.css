@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-ink: #0c1119;
+  --color-surface: #151c28;
+  --color-surface-2: #1d2635;
+  --color-line: #2b3447;
+
+  /* Text */
+  --color-paper: #e9ebf1;
+  --color-muted: #8b94a8;
+
+  /* Brand accents (financial semantics) */
+  --color-gold: #d8b369;
+  --color-teal: #5fd6c4;
+  --color-rose: #e2706a;
+
+  /* Risk profile accents */
+  --color-conservador: #6fa8dc;
+  --color-moderado: #d8b369;
+  --color-agresivo: #e2706a;
+
+  /* Fonts */
+  --font-display: "Sora", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+body {
+  @apply bg-ink text-paper font-sans antialiased;
+}
+
+@layer components {
+  /* Form elements */
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-ink border border-line rounded-md text-paper text-sm
+      placeholder:text-muted/60 font-sans
+      focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30
+      transition-colors duration-150;
+  }
+
+  .label-field {
+    @apply block text-xs uppercase tracking-wider text-muted mb-1.5 font-medium;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply px-4 py-2.5 rounded-md bg-gold text-ink font-semibold text-sm cursor-pointer
+      hover:bg-gold/90 active:bg-gold/80
+      transition-colors duration-150
+      disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2.5 rounded-md border border-line text-paper font-medium text-sm cursor-pointer
+      hover:border-gold hover:text-gold
+      transition-colors duration-150
+      disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2.5 rounded-md text-muted font-medium text-sm cursor-pointer
+      hover:text-paper hover:bg-surface-2
+      transition-colors duration-150;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2.5 rounded-md border border-rose/40 text-rose font-medium text-sm cursor-pointer
+      hover:bg-rose/10
+      transition-colors duration-150
+      disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-surface border border-line rounded-xl p-6;
+  }
+
+  .card-accent {
+    @apply bg-surface border border-line border-l-[3px] rounded-xl p-6;
+  }
+
+  /* Typography helpers */
+  .eyebrow {
+    @apply text-[0.7rem] uppercase tracking-[0.22em] text-muted font-mono;
+  }
+
+  .figure {
+    @apply font-mono tabular-nums;
+  }
+
+  /* Risk accent borders */
+  .accent-conservador {
+    @apply border-conservador;
+  }
+  .accent-moderado {
+    @apply border-moderado;
+  }
+  .accent-agresivo {
+    @apply border-agresivo;
+  }
+}
